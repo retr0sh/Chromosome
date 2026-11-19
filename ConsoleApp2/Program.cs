@@ -69,7 +69,11 @@ public sealed class SinglePointCrossover : ICrossover {
         _crossoverProbability = crossoverProbability;
     }
 
-    public Chromosome Cross() {
-        
+    public (Chromosome Child1, Chromosome Child2) Cross(Chromosome parent1, Chromosome parent2, Random rng) {
+        if (parent1 == null || parent2 == null) throw new ArgumentNullException(nameof(parent1));
+        if (parent1.Length != parent2.Length) throw new ArgumentException(nameof(parent2));
+        if (rng.NextDouble() >= _crossoverProbability) {
+            
+        }
     }
 }
