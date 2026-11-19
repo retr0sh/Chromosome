@@ -45,12 +45,18 @@ public sealed class BitFlipMutation : IMutation {
     private readonly double _mutationProbability;
 
     public BitFlipMutation(double mutationProbability) {
-        if (mutationProbability < 0 && mutationProbability > 1) throw new ArgumentOutOfRangeException(nameof(mutationProbability));
+        if (mutationProbability < 0.0 || mutationProbability > 1.0) throw new ArgumentOutOfRangeException(nameof(mutationProbability));
         _mutationProbability = mutationProbability;
     }
 
     public Chromosome Mutate(Chromosome source, Random rng) {
         var clone = source.Clone();
 
+        for (int i =0; i < clone.Length; i++) {
+            if (rng.NextDouble() < _mutationProbability) {
+                var newGenes = (bool[])clone.Genes; newGenes[i] = !newGenes[i];
+            }
+        }
+        return clone;
     }
 }
