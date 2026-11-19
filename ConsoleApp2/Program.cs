@@ -60,3 +60,16 @@ public sealed class BitFlipMutation : IMutation {
         return clone;
     }
 }
+
+public sealed class SinglePointCrossover : ICrossover {
+    public readonly double _crossoverProbability;
+
+    public SinglePointCrossover(double crossoverProbability) {
+        if (crossoverProbability < 0.0 || crossoverProbability > 1.0) throw new ArgumentOutOfRangeException(nameof(crossoverProbability));
+        _crossoverProbability = crossoverProbability;
+    }
+
+    public Chromosome Cross() {
+        
+    }
+}
