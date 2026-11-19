@@ -1,4 +1,4 @@
-﻿using static System.Console;
+using static System.Console;
 
 
 
@@ -39,4 +39,18 @@ public sealed class Chromosome {
     }
 
     public bool this[int index] => _genes[index];
+}
+
+public sealed class BitFlipMutation : IMutation {
+    private readonly double _mutationProbability;
+
+    public BitFlipMutation(double mutationProbability) {
+        if (mutationProbability < 0 && mutationProbability > 1) throw new ArgumentOutOfRangeException(nameof(mutationProbability));
+        _mutationProbability = mutationProbability;
+    }
+
+    public Chromosome Mutate(Chromosome source, Random rng) {
+        var clone = source.Clone();
+
+    }
 }
