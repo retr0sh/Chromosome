@@ -74,6 +74,6 @@ public sealed class SinglePointCrossover : ICrossover {
         if (parent1.Length != parent2.Length) throw new ArgumentException(nameof(parent2));
         if (rng.NextDouble() >= _crossoverProbability) return (parent1.Clone(), parent2.Clone());
         if (parent1.Length == 1) return (parent1.Clone(), parent2.Clone());
-
+        // Доделкин позже
     }
 }
